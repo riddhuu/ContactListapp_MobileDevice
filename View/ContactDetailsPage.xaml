@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ContactListApplication_RM.Views.ContactDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+	<ScrollView>
+		<VerticalStackLayout Spacing="16" Padding="20">
+
+			<Grid HorizontalOptions="Center" Padding="0,12">
+				<Image
+                    Source="{Binding Photo}"
+                    WidthRequest="200"
+                    HeightRequest="200"
+                    Aspect="AspectFill">
+					<Image.Clip>
+						<EllipseGeometry Center="100,100" RadiusX="100" RadiusY="100" />
+					</Image.Clip>
+				</Image>
+			</Grid>
+
+			<Label Text="{Binding Name}" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+
+			<Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*" ColumnSpacing="12">
+
+				<Label Grid.Row="0" Grid.Column="0" Text="Email:" FontAttributes="Bold" />
+				<Label Grid.Row="0" Grid.Column="1" Text="{Binding Email}" />
+
+				<Label Grid.Row="1" Grid.Column="0" Text="Phone:" FontAttributes="Bold" />
+				<Label Grid.Row="1" Grid.Column="1" Text="{Binding Phone}" />
+
+				<Label Grid.Row="2" Grid.Column="0" Text="About:" FontAttributes="Bold" />
+				<Label Grid.Row="2" Grid.Column="1" Text="{Binding Description}" LineBreakMode="WordWrap" />
+			</Grid>
+
+			<Button Text="Back"
+        Clicked="OnBackClicked" />
+
+
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>

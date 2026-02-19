@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ContactListApplication_RM.Views.ContactsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Contacts">
+
+	<ContentPage.Content>
+		<Grid RowDefinitions="Auto,*">
+
+			<Label
+                Text="Contacts"
+                FontSize="24"
+                FontAttributes="Bold"
+                Padding="16,10" />
+
+			<CollectionView
+				x:Name="ContactsCollectionView"
+				Grid.Row="1"
+				ItemsSource="{Binding GroupedContacts}"
+				IsGrouped="True"
+				SelectionMode="Single"
+				SelectionChanged="OnSelectionChanged">
+
+				<CollectionView.GroupHeaderTemplate>
+					<DataTemplate>
+						<Grid Padding="12,6"
+							  BackgroundColor="{AppThemeBinding Light='#F3F3F3', Dark='#222'}">
+							<Label Text="{Binding Key}"
+								   FontSize="18"
+								   FontAttributes="Bold" />
+						</Grid>
+					</DataTemplate>
+				</CollectionView.GroupHeaderTemplate>
+
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<Grid Padding="12" ColumnDefinitions="Auto,*">
+							<Image
+								Source="{Binding Photo}"
+								WidthRequest="48"
+								HeightRequest="48"
+								Aspect="AspectFill">
+								<Image.Clip>
+									<EllipseGeometry Center="24,24" RadiusX="24" RadiusY="24" />
+								</Image.Clip>
+							</Image>
+
+							<Label
+								Grid.Column="1"
+								VerticalOptions="Center"
+								Text="{Binding Name}"
+								FontSize="16" />
+						</Grid>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+
+			</CollectionView>
+
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>
